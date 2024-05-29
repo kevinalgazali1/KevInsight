@@ -39,14 +39,14 @@
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/nim2"
+                android:id="@+id/username2"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/custom_et"
                 android:drawableLeft="@drawable/person"
                 android:drawablePadding="8dp"
-                android:hint="NIM"
+                android:hint="Username"
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
@@ -63,6 +63,19 @@
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/custom_et"
+                android:drawableLeft="@drawable/lock"
+                android:drawablePadding="8dp"
+                android:hint="RetypePassword"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:textColor="@color/black" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
@@ -72,6 +85,17 @@
                 android:text="Register"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
+
+            <TextView
+                android:id="@+id/login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/underline"
+                android:text="Have an Account!"
+                android:textColor="@color/primary"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
