@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_health"
     tools:context=".Fragment.HealthFragment">
 
@@ -15,5 +16,15 @@
         android:padding="20dp">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:visibility="invisible"
+        android:layout_centerInParent="true"
+        android:id="@+id/loadinghealth"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        app:lottie_rawRes="@raw/loading"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true" />
 
 </RelativeLayout>

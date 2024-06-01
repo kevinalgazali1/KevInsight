@@ -23,6 +23,16 @@ public class RegisterActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(this); // Inisialisasi dbHelper
 
+        // Periksa apakah pengguna sudah login
+        if (dbHelper.isUserLoggedIn()) {
+            Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+            return;
+        }
+
+        TextInputEditText regFullname = findViewById(R.id.fullname);
         TextInputEditText regUsernameInput = findViewById(R.id.username2);
         TextInputEditText regPassInput = findViewById(R.id.password2);
         TextInputEditText regRetypePassInput = findViewById(R.id.password3);
@@ -32,18 +42,19 @@ public class RegisterActivity extends AppCompatActivity {
         buttonReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String fullname = regFullname.getText().toString();
                 String username = regUsernameInput.getText().toString().trim();
                 String pass = regPassInput.getText().toString().trim();
                 String rePass = regRetypePassInput.getText().toString().trim();
 
-                if (username.isEmpty() || pass.isEmpty() || rePass.isEmpty()) {
+                if (fullname.isEmpty() || username.isEmpty() || pass.isEmpty() || rePass.isEmpty()) {
                     Toast.makeText(RegisterActivity.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                 } else {
                     if (pass.equals(rePass)) {
                         if (dbHelper.checkUsername(username)) {
                             Toast.makeText(RegisterActivity.this, "Username already exists", Toast.LENGTH_SHORT).show();
                         } else {
-                            boolean registeredSuccess = dbHelper.insertData(username, pass);
+                            boolean registeredSuccess = dbHelper.insertData(fullname, username, pass);
                             if (registeredSuccess) {
                                 Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);

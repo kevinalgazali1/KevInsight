@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.kevinsight.API.ApiUtilities;
 import com.example.kevinsight.Adapter.Adapter;
 import com.example.kevinsight.Model.MainNews;
@@ -32,6 +33,8 @@ public class ScienceFragment extends Fragment {
     String country = "in";
     String category = "science";
     private RecyclerView rvScience;
+    LottieAnimationView loading;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,6 +51,9 @@ public class ScienceFragment extends Fragment {
         rvScience.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new Adapter(getContext(), modelArrayList);
         rvScience.setAdapter(adapter);
+        loading = view.findViewById(R.id.loadingscience);
+
+        loading.setVisibility(View.VISIBLE);
 
         findNews();
     }
@@ -57,6 +63,7 @@ public class ScienceFragment extends Fragment {
         ApiUtilities.getApiInterface().getCategoryNews(country, category, 100, api).enqueue(new Callback<MainNews>() {
             @Override
             public void onResponse(Call<MainNews> call, Response<MainNews> response) {
+                loading.setVisibility(View.GONE);
                 if (response.isSuccessful()){
                     modelArrayList.addAll(response.body().getArticles());
                     adapter.notifyDataSetChanged();

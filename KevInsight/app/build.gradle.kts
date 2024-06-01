@@ -47,4 +47,6 @@ dependencies {
 
     implementation ("androidx.appcompat:appcompat:1.3.0")
     implementation ("androidx.webkit:webkit:1.4.0")
+
+    implementation("com.airbnb.android:lottie:3.4.0")
 }

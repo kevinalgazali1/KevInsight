@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.kevinsight.API.ApiUtilities;
 import com.example.kevinsight.Adapter.Adapter;
 import com.example.kevinsight.Model.MainNews;
@@ -30,10 +32,10 @@ public class HomeFragment extends Fragment {
     Adapter adapter;
     String country = "in";
     private RecyclerView rvHome;
+    LottieAnimationView loading;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
     @Override
@@ -45,6 +47,9 @@ public class HomeFragment extends Fragment {
         rvHome.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new Adapter(getContext(), modelArrayList);
         rvHome.setAdapter(adapter);
+        loading = view.findViewById(R.id.loadinghome);
+
+        loading.setVisibility(View.VISIBLE);
 
         findNews();
     }
@@ -54,6 +59,7 @@ public class HomeFragment extends Fragment {
         ApiUtilities.getApiInterface().getNews(country,100,api).enqueue(new Callback<MainNews>() {
             @Override
             public void onResponse(Call<MainNews> call, Response<MainNews> response) {
+                loading.setVisibility(View.GONE);
                 if (response.isSuccessful()){
                     modelArrayList.addAll(response.body().getArticles());
                     adapter.notifyDataSetChanged();

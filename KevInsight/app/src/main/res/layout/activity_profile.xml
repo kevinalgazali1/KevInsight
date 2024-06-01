@@ -113,19 +113,6 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_logout"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_weight="0.5"
-                    android:backgroundTint="#007F78"
-                    android:textColor="#88CBBD"
-                    android:drawablePadding="10dp"
-                    android:padding="10dp"
-                    android:text="Logout" />
-
-
-                <Button
                     android:id="@+id/btn_edit"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

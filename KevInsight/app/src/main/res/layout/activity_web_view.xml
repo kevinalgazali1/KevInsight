@@ -8,34 +8,20 @@
 
     tools:context=".WebViewActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginTop="8dp"
-        android:background="@color/white"
-        android:id="@+id/toolbar">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Specific News"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:textColor="#007F78"/>
-
-        </RelativeLayout>
-
-    </androidx.appcompat.widget.Toolbar>
-
     <WebView
+        android:backgroundTint="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/webview"
-        android:layout_below="@+id/toolbar"/>
+        android:id="@+id/webview"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:visibility="invisible"
+        android:layout_centerInParent="true"
+        android:id="@+id/loadingweb"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        app:lottie_rawRes="@raw/loading"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true" />
 
 </RelativeLayout>

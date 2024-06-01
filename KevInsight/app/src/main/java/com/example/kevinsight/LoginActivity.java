@@ -23,6 +23,15 @@ public class LoginActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(this); // Inisialisasi dbHelper
 
+        // Periksa apakah pengguna sudah login
+        if (dbHelper.isUserLoggedIn()) {
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+            return;
+        }
+
         TextInputEditText usernameInput = findViewById(R.id.username);
         TextInputEditText passInput = findViewById(R.id.password);
         Button btnLogin = findViewById(R.id.btnLogin);
@@ -42,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                 boolean isLoggedIn = dbHelper.checkUser(username, password);
                 if (isLoggedIn) {
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();
                 } else {
