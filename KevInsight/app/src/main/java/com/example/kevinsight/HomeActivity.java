@@ -24,7 +24,7 @@ import com.google.android.material.tabs.TabLayout;
 
 public class HomeActivity extends AppCompatActivity {
     TabLayout tabLayout;
-    TabItem mhome, mscience, mhealth, mtech, mentertainment, msports;
+    TabItem mhome, msearch;
     PagerAdapter pagerAdapter;
     Toolbar mtoolbar;
     DatabaseHelper dbHelper;
@@ -39,23 +39,19 @@ public class HomeActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
 
         mhome = findViewById(R.id.home);
-        mhealth = findViewById(R.id.health);
-        mscience = findViewById(R.id.science);
-        mtech = findViewById(R.id.technology);
-        mentertainment = findViewById(R.id.entertainment);
-        msports = findViewById(R.id.sports);
+        msearch = findViewById(R.id.search);
 
         ViewPager viewPager = findViewById(R.id.fragmentContainer);
         tabLayout = findViewById(R.id.include);
 
-        pagerAdapter = new PagerAdapter(getSupportFragmentManager(), 6);
+        pagerAdapter = new PagerAdapter(getSupportFragmentManager(), 2);
         viewPager.setAdapter(pagerAdapter);
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                if(tab.getPosition()==0||tab.getPosition()==1||tab.getPosition()==2||tab.getPosition()==3||tab.getPosition()==4||tab.getPosition()==5)
+                if(tab.getPosition()==0||tab.getPosition()==1)
                 {
                     pagerAdapter.notifyDataSetChanged();
                 }

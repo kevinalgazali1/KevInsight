@@ -1,39 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_home"
-    tools:context=".Fragment.HomeFragment">
+    tools:context=".Fragment.SearchFragment">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_news"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:drawablePadding="10dp"
+        android:background="@drawable/bg_search"
+        app:queryHint="Search News"
+        app:iconifiedByDefault="false"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvhome"
+        android:id="@+id/rvsearch"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="2dp"
         android:fitsSystemWindows="true"
-        android:padding="20dp">
-
+        android:padding="20dp"
+        android:visibility="gone"
+        android:layout_below="@+id/search_news">
     </androidx.recyclerview.widget.RecyclerView>
 
+    <TextView
+        android:id="@+id/tvNoResults"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="No results found"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/search_news"
+        android:visibility="gone"
+        android:padding="20dp" />
+
     <LinearLayout
-        android:id="@+id/llNoIntHome"
+        android:id="@+id/llNoIntSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="150dp"
         android:gravity="center"
         android:orientation="vertical"
+        android:layout_below="@+id/search_news"
         android:visibility="gone">
 
         <ImageView
-            android:id="@+id/ivNoIntHome"
+            android:id="@+id/ivNoIntSearch"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:src="@drawable/noconnect" />
 
         <TextView
-            android:id="@+id/tvNoIntHome"
+            android:id="@+id/tvNoIntSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No Internet Connection"
@@ -42,7 +69,7 @@
             android:textSize="20sp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnNoIntHome"
+            android:id="@+id/btnNoIntSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#88CBBD"
@@ -54,7 +81,7 @@
     </LinearLayout>
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/loadinghome"
+        android:id="@+id/loadingsearch"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_centerInParent="true"

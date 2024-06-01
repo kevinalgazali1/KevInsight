@@ -47,7 +47,6 @@
         app:tabTextColor="#007F78"
         app:tabSelectedTextColor="#88CBBD"
         app:tabIndicatorHeight="3.5dp"
-        app:tabMode="scrollable"
         android:backgroundTint="@color/white">
 
         <com.google.android.material.tabs.TabItem
@@ -59,32 +58,8 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sports"
-            android:id="@+id/sports"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Health"
-            android:id="@+id/health"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Science"
-            android:id="@+id/science"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Entertainment"
-            android:id="@+id/entertainment"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Technology"
-            android:id="@+id/technology"/>
+            android:text="Search"
+            android:id="@+id/search"/>
 
     </com.google.android.material.tabs.TabLayout>
 
