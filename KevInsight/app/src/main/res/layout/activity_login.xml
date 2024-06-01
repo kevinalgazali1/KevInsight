@@ -5,17 +5,23 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgwhite"
+    android:background="@drawable/bg_home"
     android:fitsSystemWindows="true"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="178dp"
+        android:layout_height="163dp"
+        android:layout_below="@+id/btn_logout"
+        android:src="@drawable/logo_news" />
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="70dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/custom_et"
         app:cardCornerRadius="30dp"
@@ -34,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:text="Login"
                 android:textAlignment="center"
-                android:textColor="@color/primary"
+                android:textColor="#007F78"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
@@ -68,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="@color/primary"
+                android:backgroundTint="#88CBBD"
                 android:text="Login"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
@@ -81,7 +87,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/underline"
                 android:text="Register Here!"
-                android:textColor="@color/primary"
+                android:textColor="#007F78"
                 android:textSize="18sp" />
 
         </LinearLayout>

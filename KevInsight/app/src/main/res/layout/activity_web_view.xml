@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".WebViewActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -25,7 +26,7 @@
                 android:text="Specific News"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="@color/primary"/>
+                android:textColor="#007F78"/>
 
         </RelativeLayout>
 
