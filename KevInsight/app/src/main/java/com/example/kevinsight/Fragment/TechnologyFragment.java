@@ -11,6 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.kevinsight.API.ApiUtilities;
@@ -33,6 +37,10 @@ public class TechnologyFragment extends Fragment {
     String category = "technology";
     private RecyclerView rvTech;
     LottieAnimationView loading;
+    LinearLayout llNoInt;
+    TextView tvNoInt;
+    ImageView ivNoInt;
+    Button btnNoInt;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,8 +59,21 @@ public class TechnologyFragment extends Fragment {
         adapter = new Adapter(getContext(), modelArrayList);
         rvTech.setAdapter(adapter);
         loading = view.findViewById(R.id.loadingtech);
+        llNoInt = view.findViewById(R.id.llNoIntTech);
+        tvNoInt = view.findViewById(R.id.tvNoIntTech);
+        ivNoInt = view.findViewById(R.id.ivNoIntTech);
+        btnNoInt = view.findViewById(R.id.btnNoIntTech);
 
         loading.setVisibility(View.VISIBLE);
+
+        btnNoInt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loading.setVisibility(View.VISIBLE);
+                llNoInt.setVisibility(View.GONE);
+                findNews();
+            }
+        });
 
         findNews();
     }
@@ -66,12 +87,15 @@ public class TechnologyFragment extends Fragment {
                 if (response.isSuccessful()){
                     modelArrayList.addAll(response.body().getArticles());
                     adapter.notifyDataSetChanged();
+                } else {
+                    llNoInt.setVisibility(View.VISIBLE);
                 }
             }
 
             @Override
             public void onFailure(Call<MainNews> call, Throwable t) {
-
+                loading.setVisibility(View.GONE);
+                llNoInt.setVisibility(View.VISIBLE);
             }
         });
     }

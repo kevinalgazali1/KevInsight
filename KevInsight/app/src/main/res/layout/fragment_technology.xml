@@ -17,6 +17,40 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
+    <LinearLayout
+        android:id="@+id/llNoIntTech"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="150dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivNoIntTech"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/noconnect" />
+
+        <TextView
+            android:id="@+id/tvNoIntTech"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Internet Connection"
+            android:textSize="20sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNoIntTech"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#88CBBD"
+            android:layout_marginTop="20dp"
+            android:text="Retry"
+            android:textSize="18sp"
+            app:cornerRadius="20dp" />
+
+    </LinearLayout>
+
     <com.airbnb.lottie.LottieAnimationView
         android:visibility="invisible"
         android:layout_centerInParent="true"

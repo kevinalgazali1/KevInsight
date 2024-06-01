@@ -1,5 +1,6 @@
 package com.example.kevinsight.Fragment;
 
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.kevinsight.API.ApiUtilities;
@@ -33,6 +38,10 @@ public class HomeFragment extends Fragment {
     String country = "in";
     private RecyclerView rvHome;
     LottieAnimationView loading;
+    LinearLayout llNoInt;
+    TextView tvNoInt;
+    ImageView ivNoInt;
+    Button btnNoInt;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,8 +57,21 @@ public class HomeFragment extends Fragment {
         adapter = new Adapter(getContext(), modelArrayList);
         rvHome.setAdapter(adapter);
         loading = view.findViewById(R.id.loadinghome);
+        llNoInt = view.findViewById(R.id.llNoIntHome);
+        tvNoInt = view.findViewById(R.id.tvNoIntHome);
+        ivNoInt = view.findViewById(R.id.ivNoIntHome);
+        btnNoInt = view.findViewById(R.id.btnNoIntHome);
 
         loading.setVisibility(View.VISIBLE);
+
+        btnNoInt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loading.setVisibility(View.VISIBLE);
+                llNoInt.setVisibility(View.GONE);
+                findNews();
+            }
+        });
 
         findNews();
     }
@@ -63,12 +85,15 @@ public class HomeFragment extends Fragment {
                 if (response.isSuccessful()){
                     modelArrayList.addAll(response.body().getArticles());
                     adapter.notifyDataSetChanged();
+                } else {
+                    llNoInt.setVisibility(View.VISIBLE);
                 }
             }
 
             @Override
             public void onFailure(Call<MainNews> call, Throwable t) {
-
+                loading.setVisibility(View.GONE);
+                llNoInt.setVisibility(View.VISIBLE);
             }
         });
     }

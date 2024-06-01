@@ -11,6 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.kevinsight.API.ApiUtilities;
@@ -33,6 +37,10 @@ public class HealthFragment extends Fragment {
     String category = "health";
     private RecyclerView rvhealth;
     LottieAnimationView loading;
+    LinearLayout llNoInt;
+    TextView tvNoInt;
+    ImageView ivNoInt;
+    Button btnNoInt;
 
 
     @Override
@@ -52,8 +60,21 @@ public class HealthFragment extends Fragment {
         adapter = new Adapter(getContext(), modelArrayList);
         rvhealth.setAdapter(adapter);
         loading = view.findViewById(R.id.loadinghealth);
+        llNoInt = view.findViewById(R.id.llNoIntHealth);
+        tvNoInt = view.findViewById(R.id.tvNoIntHealth);
+        ivNoInt = view.findViewById(R.id.ivNoIntHealth);
+        btnNoInt = view.findViewById(R.id.btnNoIntHealth);
 
         loading.setVisibility(View.VISIBLE);
+
+        btnNoInt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loading.setVisibility(View.VISIBLE);
+                llNoInt.setVisibility(View.GONE);
+                findNews();
+            }
+        });
 
         findNews();
     }
@@ -67,12 +88,15 @@ public class HealthFragment extends Fragment {
                 if (response.isSuccessful()){
                     modelArrayList.addAll(response.body().getArticles());
                     adapter.notifyDataSetChanged();
+                } else {
+                    llNoInt.setVisibility(View.VISIBLE);
                 }
             }
 
             @Override
             public void onFailure(Call<MainNews> call, Throwable t) {
-
+                loading.setVisibility(View.GONE);
+                llNoInt.setVisibility(View.VISIBLE);
             }
         });
     }
